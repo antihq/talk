@@ -23,6 +23,9 @@ registry:
   password: dummy
 builder:
   arch: amd64
+  args:
+    VITE_PUSHER_APP_KEY: "fde0cfed09986b45e842"
+    VITE_PUSHER_CLUSTER: "eu"
   local: true
   driver: docker
   context: .
@@ -63,6 +66,12 @@ env:
     - SESSION_PATH
     - SESSION_DOMAIN
     - BROADCAST_CONNECTION
+    - PUSHER_APP_ID
+    - PUSHER_APP_KEY
+    - PUSHER_APP_SECRET
+    - PUSHER_HOST
+    - PUSHER_PORT
+    - PUSHER_SCHEME
     - FILESYSTEM_DISK
     - CACHE_STORE
     - MEMCACHED_HOST
@@ -85,16 +94,6 @@ env:
     - VAPID_SUBJECT
     - VAPID_PUBLIC_KEY
     - VAPID_PRIVATE_KEY
-    - REVERB_APP_ID
-    - REVERB_APP_KEY
-    - REVERB_APP_SECRET
-    - REVERB_HOST
-    - REVERB_PORT
-    - REVERB_SCHEME
-    - VITE_REVERB_APP_KEY
-    - VITE_REVERB_HOST
-    - VITE_REVERB_PORT
-    - VITE_REVERB_SCHEME
 volumes:
   - /srv/storage/talk:/storage
 deploy_timeout: 120

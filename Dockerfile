@@ -30,6 +30,10 @@ RUN composer install --no-interaction --prefer-dist --no-scripts --no-dev --opti
 
 # JS assets (vendor/ copied in: app.css @source-scans Flux stubs)
 FROM node:22-alpine AS assets
+# Public-by-design client vars, compiled into the JS bundle (via builder.args)
+ARG VITE_PUSHER_APP_KEY
+ARG VITE_PUSHER_CLUSTER
+ENV VITE_PUSHER_APP_KEY=$VITE_PUSHER_APP_KEY VITE_PUSHER_CLUSTER=$VITE_PUSHER_CLUSTER
 WORKDIR /app
 COPY package.json package-lock.json vite.config.js ./
 COPY resources ./resources
