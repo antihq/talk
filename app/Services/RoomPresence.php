@@ -9,7 +9,7 @@ class RoomPresence
 {
     protected function pusher(): Pusher
     {
-        $config = config('broadcasting.connections.reverb');
+        $config = config('broadcasting.connections.pusher');
 
         return new Pusher(
             $config['key'],
